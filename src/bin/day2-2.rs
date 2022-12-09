@@ -2,7 +2,7 @@ use std::io;
 
 const OPPONENT_ROCK: char = 'A';
 const OPPONENT_PAPER: char = 'B';
-const OPPONENT_SCISSORS: char = 'C';
+
 
 const PLAYER_ROCK: char = 'X';
 const PLAYER_PAPER: char = 'Y';
@@ -61,8 +61,9 @@ fn calculate_play(opponent: char, person: char) -> usize {
         }
         return  hand_points(PLAYER_PAPER);
     }
+
     // Shouldn't happen, I should look into option
-    return 0;
+    0
 }
 
 // Calculate the player's points for that round
@@ -78,7 +79,7 @@ fn outcome(person: char) -> usize {
         return DRAW_POINTS;
     }
 
-    return LOSS_POINTS;
+    LOSS_POINTS
 }
 
 fn main() {
@@ -87,7 +88,7 @@ fn main() {
     io::stdin().read_line(&mut buf).expect("Error reading");
     let mut total_points: usize = 0;
     while !buf.is_empty() {
-        let opponent: char = buf.chars().nth(0).unwrap();
+        let opponent: char = buf.chars().next().unwrap();
         let outcome = buf.chars().nth(2).unwrap();
 
         total_points += calculate_round_points(opponent, outcome);

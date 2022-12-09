@@ -72,7 +72,7 @@ fn main() {
     io::stdin().read_line(&mut buf).expect("Error reading");
     let mut total_points: usize = 0;
     while !buf.is_empty() {
-        let opponent: char = buf.chars().nth(0).unwrap();
+        let opponent: char = buf.chars().next().unwrap();
         let person = buf.chars().nth(2).unwrap();
 
         total_points += calculate_round_points(opponent, person);
